@@ -19,7 +19,14 @@ setup(
     description=description.strip(),
     install_requires=[
         "django-redis==4.5.0",
-        "redis==2.10.6",
+        "redis==2.10.5",
+        "fakeredis==0.8.1",
+        "funcsigs==1.0.2",
+        "hiredis==0.2.0",
+        "mock==2.0.0",
+        "msgpack-python==0.4.8",
+        "pbr==1.10.0",
+        "six==1.10.0",
     ],
     zip_safe=False,
     classifiers=[
