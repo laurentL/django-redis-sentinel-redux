@@ -544,7 +544,6 @@ class DjangoRedisCacheTests(TestCase):
             cache = caches['sample']
             client = cache.client
             master = client.get_client(write=True)
-            print(dir(master))
             slave = client.get_client(write=False)
 
             master.set('Foo', 'Bar')
