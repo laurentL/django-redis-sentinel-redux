@@ -16,13 +16,10 @@ There is already a django-redis-sentinel plugin repository <https://github.com/K
 
 Tested on:
 
-    * Python 2.7.10+
-    * Python 3.5+ (should work on 3.4.x)
+    * Python 3.6
     * django-redis>=4.5.0
-    * Redis 3.2+
-    * Django>=1.8 (latest)
-    * Django>=1.9 (latest)
-    * Django>=1.10 (latest)
+    * Redis 2.10.6
+    * Django>=2.2 (latest)
     
 The newly client does the following:
 

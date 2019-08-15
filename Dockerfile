@@ -1,16 +1,16 @@
-FROM ubuntu:16.04
-
-MAINTAINER danigosa <danigosa@gmail.com>
+FROM python:3.6-slim
 
 RUN apt-get update && apt-get install -y -qq \
     python-pip \
     openssh-server
 
-RUN pip install --upgrade pip
-
-RUN pip install "django-redis==4.5.0" "django-redis==4.5.0" "redis==2.10.5"  "fakeredis==0.8.1" "funcsigs==1.0.2" "hiredis==0.2.0"  "mock==2.0.0" "msgpack-python==0.4.8" "pbr==1.10.0" "six==1.10.0"
-
 RUN mkdir /django-redis-sentinel
+
+RUN pip install --upgrade pip wheel setuptools
+
+COPY ./requirements-test.txt /django-redis-sentinel/requirements-test.txt
+
+RUN pip install -r /django-redis-sentinel/requirements-test.txt
 
 COPY . /django-redis-sentinel
 WORKDIR /django-redis-sentinel
