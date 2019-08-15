@@ -18,7 +18,8 @@ setup(
     ],
     description=description.strip(),
     install_requires=[
-        "django-redis>=4.5.0",
+        "django-redis==4.5.0",
+        "redis==2.10.6",
     ],
     zip_safe=False,
     classifiers=[

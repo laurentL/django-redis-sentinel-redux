@@ -34,8 +34,6 @@ after_script:
 notifications:
   email:
     recipients:
-      - danigosa@gmail.com
-      - dani@robbie.ai
-      - dani@infantium.com
+      - engineering@flickswitch.co.za
     on_success: change
     on_failure: change
