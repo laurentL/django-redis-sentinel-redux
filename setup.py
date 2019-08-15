@@ -18,9 +18,8 @@ setup(
     ],
     description=description.strip(),
     install_requires=[
-<<<<<<< Updated upstream
         "django-redis==4.5.0",
-        "redis==2.10.5",
+        "redis==2.10.6",
         "fakeredis==0.8.1",
         "funcsigs==1.0.2",
         "hiredis==0.2.0",
@@ -28,10 +27,6 @@ setup(
         "msgpack-python==0.4.8",
         "pbr==1.10.0",
         "six==1.10.0",
-=======
-        "django-redis>=4.5.0",
-        "redis==2.10.6",
->>>>>>> Stashed changes
     ],
     zip_safe=False,
     classifiers=[

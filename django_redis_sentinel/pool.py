@@ -1,5 +1,3 @@
-import logging
-
 from django.conf import settings
 from django.core.exceptions import ImproperlyConfigured
 from django_redis import util as djredis_util
