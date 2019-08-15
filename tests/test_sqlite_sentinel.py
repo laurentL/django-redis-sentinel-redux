@@ -17,13 +17,13 @@ CACHES = {
         'BACKEND': 'django_redis_sentinel.cache.RedisSentinelCache',
         'LOCATION': [
             ('sentinel1', 26379),
-            ('sentinel2', 26380),
-            ('sentinel3', 26381)
+            ('sentinel2', 26379),
+            ('sentinel3', 26379)
         ],
         'OPTIONS': {
             'CONNECTION_POOL_KWARGS': {'decode_responses': True},
             'CLIENT_CLASS': 'django_redis_sentinel.client.SentinelClient',
-            'SENTINEL_SERVICE_NAME': 'mymaster',
+            'SENTINEL_SERVICE_NAME': 'rmaster',
             'REDIS_CLIENT_KWARGS': {
                 'db': 1
             }
@@ -33,8 +33,8 @@ CACHES = {
         'BACKEND': 'django_redis_sentinel.cache.RedisSentinelCache',
         'LOCATION': [
             ('sentinel1', 26379),
-            ('sentinel2', 26380),
-            ('sentinel3', 26381)
+            ('sentinel2', 26379),
+            ('sentinel3', 26379)
         ],
         'OPTIONS': {
             'CONNECTION_POOL_KWARGS': {'decode_responses': True},
@@ -49,8 +49,8 @@ CACHES = {
         'BACKEND': 'django_redis_sentinel.cache.RedisSentinelCache',
         'LOCATION': [
             ('sentinel1', 26379),
-            ('sentinel2', 26380),
-            ('sentinel3', 26381)
+            ('sentinel2', 26379),
+            ('sentinel3', 26379)
         ],
         'OPTIONS': {
             'CONNECTION_POOL_KWARGS': {'decode_responses': True},
@@ -65,8 +65,8 @@ CACHES = {
         'BACKEND': 'django_redis_sentinel.cache.RedisSentinelCache',
         'LOCATION': [
             ('sentinel1', 26379),
-            ('sentinel2', 26380),
-            ('sentinel3', 26381)
+            ('sentinel2', 26379),
+            ('sentinel3', 26379)
         ],
         'OPTIONS': {
             'CONNECTION_POOL_KWARGS': {'decode_responses': True},
