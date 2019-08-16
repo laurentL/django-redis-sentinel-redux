@@ -21,11 +21,11 @@ CACHES = {
             ('sentinel3', 26379)
         ],
         'OPTIONS': {
-            'CONNECTION_POOL_KWARGS': {'decode_responses': True},
             'CLIENT_CLASS': 'django_redis_sentinel.client.SentinelClient',
             'SENTINEL_SERVICE_NAME': 'rmaster',
             'REDIS_CLIENT_KWARGS': {
-                'db': 1
+                'db': 1,
+                'decode_responses': True,
             }
         }
     },
@@ -37,11 +37,11 @@ CACHES = {
             ('sentinel3', 26379)
         ],
         'OPTIONS': {
-            'CONNECTION_POOL_KWARGS': {'decode_responses': True},
             'CLIENT_CLASS': 'django_redis_sentinel.client.SentinelClient',
             'SENTINEL_SERVICE_NAME': 'rmaster',
             'REDIS_CLIENT_KWARGS': {
-                'db': 1
+                'db': 1,
+                'decode_responses': True,
             }
         }
     },
@@ -53,11 +53,11 @@ CACHES = {
             ('sentinel3', 26379)
         ],
         'OPTIONS': {
-            'CONNECTION_POOL_KWARGS': {'decode_responses': True},
             'CLIENT_CLASS': 'django_redis_sentinel.client.SentinelClient',
             'SENTINEL_SERVICE_NAME': 'rmaster',
             'REDIS_CLIENT_KWARGS': {
-                'db': 1
+                'db': 1,
+                'decode_responses': True,
             }
         }
     },
@@ -69,11 +69,11 @@ CACHES = {
             ('sentinel3', 26379)
         ],
         'OPTIONS': {
-            'CONNECTION_POOL_KWARGS': {'decode_responses': True},
             'CLIENT_CLASS': 'django_redis_sentinel.client.SentinelClient',
             'SENTINEL_SERVICE_NAME': 'rmaster',
             'REDIS_CLIENT_KWARGS': {
-                'db': 1
+                'db': 1,
+                'decode_responses': True,
             }
         },
         'KEY_PREFIX': 'test-prefix',
