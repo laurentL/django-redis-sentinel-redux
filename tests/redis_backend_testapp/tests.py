@@ -113,17 +113,17 @@ class DjangoRedisCacheTests(TestCase):
 
     def test_setnx_timeout(self):
         # test that timeout still works for nx=True
-        res = self.cache.set('test_key_nx', 1, timeout=2, nx=True)
+        res = self.cache.set('test_key_nx', 1, timeout=0.5, nx=True)
         self.assertTrue(res)
-        time.sleep(3)
+        time.sleep(1)
         res = self.cache.get('test_key_nx', None)
         self.assertEqual(res, None)
 
         # test that timeout will not affect key, if it was there
         self.cache.set('test_key_nx', 1)
-        res = self.cache.set('test_key_nx', 2, timeout=2, nx=True)
+        res = self.cache.set('test_key_nx', 2, timeout=0.5, nx=True)
         self.assertFalse(res)
-        time.sleep(3)
+        time.sleep(1)
         res = self.cache.get('test_key_nx', None)
         self.assertEqual(res, 1)
 
@@ -190,8 +190,8 @@ class DjangoRedisCacheTests(TestCase):
         self.assertEqual(res, float_val)
 
     def test_timeout(self):
-        self.cache.set('test_key', 222, timeout=3)
-        time.sleep(4)
+        self.cache.set('test_key', 222, timeout=1)
+        time.sleep(2)
 
         res = self.cache.get('test_key', None)
         self.assertEqual(res, None)
@@ -206,9 +206,9 @@ class DjangoRedisCacheTests(TestCase):
         res = self.cache.get('test_key', None)
         self.assertIsNone(res)
 
-        self.cache.set('test_key', 222, 1)
+        self.cache.set('test_key', 222, 0.5)
         res1 = self.cache.get('test_key', None)
-        time.sleep(2)
+        time.sleep(1)
         res2 = self.cache.get('test_key', None)
         self.assertEqual(res1, 222)
         self.assertEqual(res2, None)
@@ -885,6 +885,9 @@ class SessionTestsMixin(object):
 
     def test_decode_failure_logged_to_security(self):
         bad_encode = base64.b64encode(b'flaskdj:alkdjf')
+        # Has to be a string - see https://github.com/django/django/pull/10470
+        bad_encode = bad_encode.decode('ascii')
+
         with patch_logger('django.security.SuspiciousSession', 'warning') as calls:
             self.assertEqual({}, self.session.decode(bad_encode))
             # check that the failed decode is logged
