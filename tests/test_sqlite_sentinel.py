@@ -1,6 +1,6 @@
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3'
+        'ENGINE': 'django.db.backends.sqlite3',
     },
 }
 
@@ -18,7 +18,7 @@ CACHES = {
         'LOCATION': [
             ('sentinel1', 26379),
             ('sentinel2', 26379),
-            ('sentinel3', 26379)
+            ('sentinel3', 26379),
         ],
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis_sentinel.client.SentinelClient',
@@ -26,15 +26,15 @@ CACHES = {
             'REDIS_CLIENT_KWARGS': {
                 'db': 1,
                 'decode_responses': True,
-            }
-        }
+            },
+        },
     },
     'doesnotexist': {
         'BACKEND': 'django_redis_sentinel.cache.RedisSentinelCache',
         'LOCATION': [
             ('sentinel1', 26379),
             ('sentinel2', 26379),
-            ('sentinel3', 26379)
+            ('sentinel3', 26379),
         ],
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis_sentinel.client.SentinelClient',
@@ -42,15 +42,15 @@ CACHES = {
             'REDIS_CLIENT_KWARGS': {
                 'db': 1,
                 'decode_responses': True,
-            }
-        }
+            },
+        },
     },
     'sample': {
         'BACKEND': 'django_redis_sentinel.cache.RedisSentinelCache',
         'LOCATION': [
             ('sentinel1', 26379),
             ('sentinel2', 26379),
-            ('sentinel3', 26379)
+            ('sentinel3', 26379),
         ],
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis_sentinel.client.SentinelClient',
@@ -58,15 +58,15 @@ CACHES = {
             'REDIS_CLIENT_KWARGS': {
                 'db': 1,
                 'decode_responses': True,
-            }
-        }
+            },
+        },
     },
     'with_prefix': {
         'BACKEND': 'django_redis_sentinel.cache.RedisSentinelCache',
         'LOCATION': [
             ('sentinel1', 26379),
             ('sentinel2', 26379),
-            ('sentinel3', 26379)
+            ('sentinel3', 26379),
         ],
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis_sentinel.client.SentinelClient',
@@ -74,7 +74,7 @@ CACHES = {
             'REDIS_CLIENT_KWARGS': {
                 'db': 1,
                 'decode_responses': True,
-            }
+            },
         },
         'KEY_PREFIX': 'test-prefix',
     },

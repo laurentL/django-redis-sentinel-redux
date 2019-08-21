@@ -47,7 +47,7 @@ class SentinelConnectionFactory(ConnectionFactory):
         self.options = options
 
         # Sentinel Connection Pool is not cached, not indexed by URL,
-        # so params are constant for each connection/usr/local/lib/python3.6/site-packages/django_redis/client/default.py
+        # so params are constant for each connection
         self.sentinel_conn_pool_cls_kwargs = {'parser_class': self.get_parser_cls()}
 
         password = self.options.get('PASSWORD', None)

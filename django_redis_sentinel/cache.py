@@ -11,7 +11,7 @@ class RedisSentinelCache(RedisCache):
         self._server = server
         self._params = params
 
-        options = params.get("OPTIONS", {})
+        options = params.get('OPTIONS', {})
         self._client_cls = options.get(
             'CLIENT_CLASS',
             'django_redis_sentinel.client.SentinelClient',

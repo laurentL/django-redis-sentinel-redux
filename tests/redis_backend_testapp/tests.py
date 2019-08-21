@@ -24,7 +24,7 @@ def make_key(key, prefix, version):
 
 
 def reverse_key(key):
-    return key.split("#", 2)[2]
+    return key.split('#', 2)[2]
 
 
 class DjangoRedisConnectionStrings(TestCase):
@@ -529,7 +529,7 @@ class DjangoRedisCacheTests(TestCase):
         try:
             cache = caches['sample']
             client = cache.client
-            client._server = ['foo', 'bar', ]
+            client._server = ['foo', 'bar']
             client._clients = ['Foo', 'Bar']
 
             self.assertEqual(client.get_client(write=True), 'Foo')
@@ -767,7 +767,7 @@ class SessionTestsMixin(object):
             except AttributeError:
                 self.fail(
                     'The session object did not save properly. '
-                    'Middleware may be saving cache items without namespaces.'
+                    'Middleware may be saving cache items without namespaces.',
                 )
             self.assertNotEqual(session.session_key, '1')
             self.assertEqual(session.get('cat'), None)
