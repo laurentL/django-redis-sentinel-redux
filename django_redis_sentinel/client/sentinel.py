@@ -1,5 +1,3 @@
-# -*- coding: utf-8 -*-
-
 import socket
 
 from django.core.cache.backends.base import get_key_func
