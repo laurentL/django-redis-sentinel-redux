@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-
+
 import base64
 import datetime
-from datetime import timedelta
 import time
 import unittest
+from datetime import timedelta
 
 from django import VERSION
 from django.conf import settings
@@ -10,17 +12,17 @@ from django.core.cache import cache
 from django.test import TestCase
 from django_redis.serializers import json as json_serializer, msgpack as msgpack_serializer
 
-from django_redis_sentinel import pool
 import django_redis_sentinel.cache
+from django_redis_sentinel import pool
 from django_redis_sentinel.client.sentinel import SentinelClient
 
 FAKE_REDIS = (
-    settings.CACHES['default']['OPTIONS'].get('REDIS_CLIENT_CLASS') == 'fakeredis.FakeStrictRedis'
+        settings.CACHES['default']['OPTIONS'].get('REDIS_CLIENT_CLASS') == 'fakeredis.FakeStrictRedis'
 )
 
 
 def make_key(key, prefix, version):
-    return f'{prefix}#{version}#{key}'
+    return '{}#{}#{}'.format(prefix, version, key)
 
 
 def reverse_key(key):
@@ -719,8 +721,8 @@ class SessionTestsMixin(object):
 
     def test_save(self):
         if (
-            hasattr(self.session, '_cache')
-            and 'DummyCache' in settings.CACHES[settings.SESSION_CACHE_ALIAS]['BACKEND']
+                hasattr(self.session, '_cache')
+                and 'DummyCache' in settings.CACHES[settings.SESSION_CACHE_ALIAS]['BACKEND']
         ):
             raise unittest.SkipTest('Session saving tests require a real cache backend')
 
@@ -897,7 +899,7 @@ class SessionTestsMixin(object):
     def test_actual_expiry(self):
         # this doesn't work with JSONSerializer (serializing timedelta)
         with override_settings(
-            SESSION_SERIALIZER='django.contrib.sessions.serializers.PickleSerializer',
+                SESSION_SERIALIZER='django.contrib.sessions.serializers.PickleSerializer',
         ):
             self.session = self.backend()  # reinitialize after overriding settings
 

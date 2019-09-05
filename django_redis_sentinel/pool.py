@@ -21,7 +21,7 @@ class SentinelConnectionFactory(ConnectionFactory):
     # Creates Sentinel Client from connection params
     # It does not cache anything
     def __init__(self, options):
-        super().__init__(options)
+        super(SentinelConnectionFactory, self).__init__(options)
 
         pool_cls_path = options.get(
             'CONNECTION_POOL_CLASS',

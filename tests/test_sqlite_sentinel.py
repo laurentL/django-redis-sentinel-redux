@@ -11,14 +11,14 @@ ADMIN_MEDIA_PREFIX = '/static/admin/'
 STATICFILES_DIRS = ()
 
 MIDDLEWARE_CLASSES = []
-
+DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS = False
 CACHES = {
     'default': {
         'BACKEND': 'django_redis_sentinel.cache.RedisSentinelCache',
         'LOCATION': [
-            ('sentinel1', 26379),
-            ('sentinel2', 26379),
-            ('sentinel3', 26379),
+            ('127.0.0.1', 26379),
+            ('127.0.0.2', 26379),
+            ('127.0.0.3', 26379),
         ],
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis_sentinel.client.SentinelClient',
@@ -32,9 +32,9 @@ CACHES = {
     'doesnotexist': {
         'BACKEND': 'django_redis_sentinel.cache.RedisSentinelCache',
         'LOCATION': [
-            ('sentinel1', 26379),
-            ('sentinel2', 26379),
-            ('sentinel3', 26379),
+            ('127.0.0.1', 26379),
+            ('127.0.0.2', 26379),
+            ('127.0.0.3', 26379),
         ],
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis_sentinel.client.SentinelClient',
@@ -48,9 +48,9 @@ CACHES = {
     'sample': {
         'BACKEND': 'django_redis_sentinel.cache.RedisSentinelCache',
         'LOCATION': [
-            ('sentinel1', 26379),
-            ('sentinel2', 26379),
-            ('sentinel3', 26379),
+            ('127.0.0.1', 26379),
+            ('127.0.0.2', 26379),
+            ('127.0.0.3', 26379),
         ],
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis_sentinel.client.SentinelClient',
@@ -64,9 +64,9 @@ CACHES = {
     'with_prefix': {
         'BACKEND': 'django_redis_sentinel.cache.RedisSentinelCache',
         'LOCATION': [
-            ('sentinel1', 26379),
-            ('sentinel2', 26379),
-            ('sentinel3', 26379),
+            ('127.0.0.1', 26379),
+            ('127.0.0.2', 26379),
+            ('127.0.0.3', 26379),
         ],
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis_sentinel.client.SentinelClient',
