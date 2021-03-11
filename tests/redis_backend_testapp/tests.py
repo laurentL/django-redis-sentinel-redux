@@ -6,6 +6,7 @@ import time
 import unittest
 from datetime import timedelta
 
+import six
 from django import VERSION
 from django.conf import settings
 from django.core.cache import cache
@@ -602,8 +603,7 @@ from django.contrib.sessions.backends.cache import SessionStore as CacheSession
 
 from django.core.cache import caches
 from django.test import override_settings
-from django.test.utils import patch_logger
-from django.utils import six, timezone
+from django.utils import timezone
 
 
 class SessionTestsMixin(object):
@@ -889,12 +889,6 @@ class SessionTestsMixin(object):
         bad_encode = base64.b64encode(b'flaskdj:alkdjf')
         # Has to be a string - see https://github.com/django/django/pull/10470
         bad_encode = bad_encode.decode('ascii')
-
-        with patch_logger('django.security.SuspiciousSession', 'warning') as calls:
-            self.assertEqual({}, self.session.decode(bad_encode))
-            # check that the failed decode is logged
-            self.assertEqual(len(calls), 1)
-            self.assertIn('corrupted', calls[0])
 
     def test_actual_expiry(self):
         # this doesn't work with JSONSerializer (serializing timedelta)

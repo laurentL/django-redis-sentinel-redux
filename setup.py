@@ -18,7 +18,7 @@ setup(
     ],
     description=description.strip(),
     install_requires=[
-        'django<2',
+        'django>2',
         'django-redis',
         'redis',
         'fakeredis',

@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   django-redis:
     container_name: django-redis-sentinel
@@ -14,9 +14,23 @@ services:
     - sentinel3
     ports:
      - "2005:22"
+    networks:
+      foonet:
+        ipv4_address: 172.22.1.10
   sentinel1:
     container_name: sentinel1
     build: sentinel
+    depends_on:
+      - redis-master
+      - redis-slave1
+      - redis-slave2
+    ports:
+      - "127.0.0.1:26379:26379"
+    expose:
+      - 26379
+    networks:
+      foonet:
+        ipv4_address: 172.22.1.11
     environment:
     - SENTINEL_DOWN_AFTER=5000
     - SENTINEL_FAILOVER=180000
@@ -27,6 +41,17 @@ services:
   sentinel2:
     container_name: sentinel2
     build: sentinel
+    depends_on:
+      - redis-master
+      - redis-slave1
+      - redis-slave2
+    ports:
+      - "127.0.0.2:26379:26379"
+    expose:
+      - 26379
+    networks:
+      foonet:
+        ipv4_address: 172.22.1.12
     environment:
     - SENTINEL_DOWN_AFTER=5000
     - SENTINEL_FAILOVER=180000
@@ -37,6 +62,17 @@ services:
   sentinel3:
     container_name: sentinel3
     build: sentinel
+    depends_on:
+      - redis-master
+      - redis-slave1
+      - redis-slave2
+    ports:
+      - "127.0.0.3:26379:26379"
+    expose:
+      - 26379
+    networks:
+      foonet:
+        ipv4_address: 172.22.1.13
     environment:
     - SENTINEL_DOWN_AFTER=5000
     - SENTINEL_FAILOVER=180000
@@ -47,15 +83,38 @@ services:
   redis-master:
     container_name: redis-master
     image: redis
+    expose:
+      - 6379
+    networks:
+      foonet:
+        ipv4_address: 172.22.1.14
   redis-slave1:
     container_name: redis-slave1
     image: redis
     command: redis-server --slaveof redis-master 6379
     links:
-    - redis-master
+      - redis-master
+    expose:
+      - 6379
+    networks:
+      foonet:
+        ipv4_address: 172.22.1.15
   redis-slave2:
     container_name: redis-slave2
     image: redis
     command: redis-server --slaveof redis-master 6379
     links:
-    - redis-master
+      - redis-master
+    expose:
+      - 6379
+    networks:
+      foonet:
+        ipv4_address: 172.22.1.16
+
+networks:
+  foonet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.22.1.0/24
