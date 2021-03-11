@@ -16,9 +16,9 @@ CACHES = {
     'default': {
         'BACKEND': 'django_redis_sentinel.cache.RedisSentinelCache',
         'LOCATION': [
-            ('127.0.0.1', 26379),
-            ('127.0.0.2', 26379),
-            ('127.0.0.3', 26379),
+            ('127.0.0.1', 26380),
+            ('127.0.0.1', 26381),
+            ('127.0.0.1', 26382),
         ],
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis_sentinel.client.SentinelClient',
@@ -32,9 +32,9 @@ CACHES = {
     'doesnotexist': {
         'BACKEND': 'django_redis_sentinel.cache.RedisSentinelCache',
         'LOCATION': [
-            ('127.0.0.1', 26379),
-            ('127.0.0.2', 26379),
-            ('127.0.0.3', 26379),
+            ('127.0.0.1', 26380),
+            ('127.0.0.1', 26381),
+            ('127.0.0.1', 26382),
         ],
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis_sentinel.client.SentinelClient',
@@ -48,9 +48,9 @@ CACHES = {
     'sample': {
         'BACKEND': 'django_redis_sentinel.cache.RedisSentinelCache',
         'LOCATION': [
-            ('127.0.0.1', 26379),
-            ('127.0.0.2', 26379),
-            ('127.0.0.3', 26379),
+            ('127.0.0.1', 26380),
+            ('127.0.0.1', 26381),
+            ('127.0.0.1', 26382),
         ],
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis_sentinel.client.SentinelClient',
@@ -64,9 +64,9 @@ CACHES = {
     'with_prefix': {
         'BACKEND': 'django_redis_sentinel.cache.RedisSentinelCache',
         'LOCATION': [
-            ('127.0.0.1', 26379),
-            ('127.0.0.2', 26379),
-            ('127.0.0.3', 26379),
+            ('127.0.0.1', 26380),
+            ('127.0.0.1', 26381),
+            ('127.0.0.1', 26382),
         ],
         'OPTIONS': {
             'CLIENT_CLASS': 'django_redis_sentinel.client.SentinelClient',
